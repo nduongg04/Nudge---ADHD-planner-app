@@ -1,0 +1,48 @@
+{
+  "tabs": {
+    "home": "Trang chủ",
+    "explore": "Khám phá"
+  },
+  "home": {
+    "welcome": "Chào mừng!",
+    "step1Title": "Bước 1: Thử nghiệm",
+    "step1Body": "Chỉnh sửa {{file}} để xem các thay đổi. Nhấn {{key}} để mở công cụ dành cho nhà phát triển.",
+    "step2Title": "Bước 2: Khám phá",
+    "step2Body": "Nhấn tab Khám phá để tìm hiểu thêm về những gì có trong ứng dụng khởi động này.",
+    "step2Action": "Hành động",
+    "step2Share": "Chia sẻ",
+    "step2More": "Xem thêm",
+    "step2Delete": "Xóa",
+    "step3Title": "Bước 3: Bắt đầu lại từ đầu",
+    "step3Body": "Khi bạn sẵn sàng, chạy {{cmd}} để có một thư mục {{appDir}} mới. Thư mục {{appDir}} hiện tại sẽ được chuyển sang {{exampleDir}}."
+  },
+  "explore": {
+    "title": "Khám phá",
+    "subtitle": "Ứng dụng này bao gồm mã mẫu để giúp bạn bắt đầu.",
+    "fileRouting": "Định tuyến dựa trên tệp",
+    "fileRoutingBody1": "Ứng dụng này có hai màn hình: {{file1}} và {{file2}}",
+    "fileRoutingBody2": "Tệp bố cục trong {{layoutFile}} thiết lập trình điều hướng tab.",
+    "learnMore": "Tìm hiểu thêm",
+    "platformSupport": "Hỗ trợ Android, iOS và web",
+    "platformSupportBody": "Bạn có thể mở dự án này trên Android, iOS và web. Để mở phiên bản web, nhấn {{key}} trong terminal đang chạy dự án này.",
+    "images": "Hình ảnh",
+    "imagesBody": "Đối với hình ảnh tĩnh, bạn có thể sử dụng hậu tố {{suffix2x}} và {{suffix3x}} để cung cấp tệp cho các mật độ màn hình khác nhau",
+    "darkMode": "Các thành phần chế độ sáng và tối",
+    "darkModeBody": "Mẫu này có hỗ trợ chế độ sáng và tối. Hook {{hook}} cho phép bạn kiểm tra bảng màu hiện tại của người dùng để điều chỉnh màu sắc UI cho phù hợp.",
+    "animations": "Hoạt ảnh",
+    "animationsBody": "Mẫu này bao gồm một ví dụ về thành phần có hoạt ảnh. Thành phần {{component}} sử dụng thư viện mạnh mẽ {{library}} để tạo hoạt ảnh vẫy tay.",
+    "animationsIosBody": "Thành phần {{component}} cung cấp hiệu ứng parallax cho hình ảnh tiêu đề."
+  },
+  "languageSwitcher": {
+    "label": "Ngôn ngữ",
+    "en": "Tiếng Anh",
+    "fr": "Tiếng Pháp",
+    "ja": "Tiếng Nhật",
+    "vi": "Tiếng Việt",
+    "ko": "Tiếng Hàn"
+  },
+  "modal": {
+    "title": "Đây là một modal",
+    "goHome": "Về màn hình chính"
+  }
+}

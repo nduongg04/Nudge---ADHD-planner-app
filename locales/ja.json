@@ -1,0 +1,48 @@
+{
+  "tabs": {
+    "home": "ホーム",
+    "explore": "探索"
+  },
+  "home": {
+    "welcome": "ようこそ！",
+    "step1Title": "ステップ1：試してみる",
+    "step1Body": "{{file}} を編集して変更を確認してください。{{key}} を押して開発者ツールを開きます。",
+    "step2Title": "ステップ2：探索する",
+    "step2Body": "「探索」タブをタップして、このスターターアプリに含まれているものについて詳しく学びましょう。",
+    "step2Action": "アクション",
+    "step2Share": "共有",
+    "step2More": "もっと見る",
+    "step2Delete": "削除",
+    "step3Title": "ステップ3：新しく始める",
+    "step3Body": "準備ができたら、{{cmd}} を実行して新しい {{appDir}} ディレクトリを取得してください。現在の {{appDir}} は {{exampleDir}} に移動されます。"
+  },
+  "explore": {
+    "title": "探索",
+    "subtitle": "このアプリには、開始を支援するサンプルコードが含まれています。",
+    "fileRouting": "ファイルベースのルーティング",
+    "fileRoutingBody1": "このアプリには2つの画面があります：{{file1}} と {{file2}}",
+    "fileRoutingBody2": "{{layoutFile}} のレイアウトファイルがタブナビゲーターを設定します。",
+    "learnMore": "詳細を見る",
+    "platformSupport": "Android、iOS、Webのサポート",
+    "platformSupportBody": "このプロジェクトはAndroid、iOS、Webで開くことができます。Webバージョンを開くには、このプロジェクトを実行しているターミナルで {{key}} を押してください。",
+    "images": "画像",
+    "imagesBody": "静的画像には、異なる画面密度のファイルを提供するために {{suffix2x}} および {{suffix3x}} サフィックスを使用できます",
+    "darkMode": "ライト・ダークモードコンポーネント",
+    "darkModeBody": "このテンプレートはライト・ダークモードをサポートしています。{{hook}} フックを使用して、ユーザーの現在のカラースキームを確認し、UIカラーを適切に調整できます。",
+    "animations": "アニメーション",
+    "animationsBody": "このテンプレートには、アニメーションコンポーネントの例が含まれています。{{component}} コンポーネントは強力な {{library}} ライブラリを使用して手を振るアニメーションを作成します。",
+    "animationsIosBody": "{{component}} コンポーネントはヘッダー画像にパララックス効果を提供します。"
+  },
+  "languageSwitcher": {
+    "label": "言語",
+    "en": "英語",
+    "fr": "フランス語",
+    "ja": "日本語",
+    "vi": "ベトナム語",
+    "ko": "韓国語"
+  },
+  "modal": {
+    "title": "これはモーダルです",
+    "goHome": "ホーム画面に戻る"
+  }
+}

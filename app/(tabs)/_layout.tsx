@@ -1,35 +1,44 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+/**
+ * Tab layout — Native iOS 26 liquid glass tab bar.
+ * Uses NativeTabs from expo-router for native glass effect with sliding bubble.
+ */
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { NativeTabs, Icon, Label } from 'expo-router/unstable-native-tabs';
+import React from 'react';
+import { useDesignSystem } from '@/hooks/use-design-system';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const { colors } = useDesignSystem();
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+    <NativeTabs
+      iconColor={{
+        default: colors.textPrimary,
+        selected: colors.accent,
+      }}
+      labelStyle={{
+        default: { color: colors.textTertiary },
+        selected: { color: colors.accent },
+      }}
+    >
+      <NativeTabs.Trigger name="index">
+        <Icon sf={{ default: 'house', selected: 'house.fill' }} />
+        <Label>Home</Label>
+      </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name="focus">
+        <Icon sf={{ default: 'flame', selected: 'flame.fill' }} />
+        <Label>Focus</Label>
+      </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name="profile" hidden={false}>
+        <Icon sf={{ default: 'person', selected: 'person.fill' }} />
+        <Label>Me</Label>
+      </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name="todo" hidden />
+      <NativeTabs.Trigger name="chat" hidden />
+      <NativeTabs.Trigger name="explore" hidden />
+    </NativeTabs>
   );
 }

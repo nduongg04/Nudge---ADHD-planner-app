@@ -1,0 +1,48 @@
+{
+  "tabs": {
+    "home": "Home",
+    "explore": "Explore"
+  },
+  "home": {
+    "welcome": "Welcome!",
+    "step1Title": "Step 1: Try it",
+    "step1Body": "Edit {{file}} to see changes. Press {{key}} to open developer tools.",
+    "step2Title": "Step 2: Explore",
+    "step2Body": "Tap the Explore tab to learn more about what's included in this starter app.",
+    "step2Action": "Action",
+    "step2Share": "Share",
+    "step2More": "More",
+    "step2Delete": "Delete",
+    "step3Title": "Step 3: Get a fresh start",
+    "step3Body": "When you're ready, run {{cmd}} to get a fresh {{appDir}} directory. This will move the current {{appDir}} to {{exampleDir}}."
+  },
+  "explore": {
+    "title": "Explore",
+    "subtitle": "This app includes example code to help you get started.",
+    "fileRouting": "File-based routing",
+    "fileRoutingBody1": "This app has two screens: {{file1}} and {{file2}}",
+    "fileRoutingBody2": "The layout file in {{layoutFile}} sets up the tab navigator.",
+    "learnMore": "Learn more",
+    "platformSupport": "Android, iOS, and web support",
+    "platformSupportBody": "You can open this project on Android, iOS, and the web. To open the web version, press {{key}} in the terminal running this project.",
+    "images": "Images",
+    "imagesBody": "For static images, you can use the {{suffix2x}} and {{suffix3x}} suffixes to provide files for different screen densities",
+    "darkMode": "Light and dark mode components",
+    "darkModeBody": "This template has light and dark mode support. The {{hook}} hook lets you inspect what the user's current color scheme is, and so you can adjust UI colors accordingly.",
+    "animations": "Animations",
+    "animationsBody": "This template includes an example of an animated component. The {{component}} component uses the powerful {{library}} library to create a waving hand animation.",
+    "animationsIosBody": "The {{component}} component provides a parallax effect for the header image."
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "en": "English",
+    "fr": "French",
+    "ja": "Japanese",
+    "vi": "Vietnamese",
+    "ko": "Korean"
+  },
+  "modal": {
+    "title": "This is a modal",
+    "goHome": "Go to home screen"
+  }
+}

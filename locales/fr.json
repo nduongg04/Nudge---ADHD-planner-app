@@ -1,0 +1,48 @@
+{
+  "tabs": {
+    "home": "Accueil",
+    "explore": "Explorer"
+  },
+  "home": {
+    "welcome": "Bienvenue !",
+    "step1Title": "Étape 1 : Essayez",
+    "step1Body": "Modifiez {{file}} pour voir les changements. Appuyez sur {{key}} pour ouvrir les outils de développement.",
+    "step2Title": "Étape 2 : Explorez",
+    "step2Body": "Appuyez sur l'onglet Explorer pour en savoir plus sur ce qui est inclus dans cette application de démarrage.",
+    "step2Action": "Action",
+    "step2Share": "Partager",
+    "step2More": "Plus",
+    "step2Delete": "Supprimer",
+    "step3Title": "Étape 3 : Repartir à zéro",
+    "step3Body": "Quand vous êtes prêt, exécutez {{cmd}} pour obtenir un nouveau répertoire {{appDir}}. Cela déplacera le {{appDir}} actuel vers {{exampleDir}}."
+  },
+  "explore": {
+    "title": "Explorer",
+    "subtitle": "Cette application inclut un exemple de code pour vous aider à démarrer.",
+    "fileRouting": "Routage basé sur les fichiers",
+    "fileRoutingBody1": "Cette application a deux écrans : {{file1}} et {{file2}}",
+    "fileRoutingBody2": "Le fichier de mise en page dans {{layoutFile}} configure le navigateur d'onglets.",
+    "learnMore": "En savoir plus",
+    "platformSupport": "Support Android, iOS et web",
+    "platformSupportBody": "Vous pouvez ouvrir ce projet sur Android, iOS et le web. Pour ouvrir la version web, appuyez sur {{key}} dans le terminal exécutant ce projet.",
+    "images": "Images",
+    "imagesBody": "Pour les images statiques, vous pouvez utiliser les suffixes {{suffix2x}} et {{suffix3x}} pour fournir des fichiers pour différentes densités d'écran",
+    "darkMode": "Composants clair et sombre",
+    "darkModeBody": "Ce modèle prend en charge les modes clair et sombre. Le hook {{hook}} vous permet d'inspecter le schéma de couleurs actuel de l'utilisateur afin d'ajuster les couleurs de l'interface en conséquence.",
+    "animations": "Animations",
+    "animationsBody": "Ce modèle inclut un exemple de composant animé. Le composant {{component}} utilise la puissante bibliothèque {{library}} pour créer une animation de main qui salue.",
+    "animationsIosBody": "Le composant {{component}} fournit un effet de parallaxe pour l'image d'en-tête."
+  },
+  "languageSwitcher": {
+    "label": "Langue",
+    "en": "Anglais",
+    "fr": "Français",
+    "ja": "Japonais",
+    "vi": "Vietnamien",
+    "ko": "Coréen"
+  },
+  "modal": {
+    "title": "Ceci est une fenêtre modale",
+    "goHome": "Aller à l'écran d'accueil"
+  }
+}

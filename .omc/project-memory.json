@@ -1,0 +1,252 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1774646175488,
+  "projectRoot": "/Users/nguyenduong/Desktop/StudyDocuments/apps/mobile-app-saas",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "react",
+        "version": "19.1.0",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "19.1.0",
+        "category": "frontend"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": "npm run lint",
+    "devCommand": "npm run start",
+    "scripts": {
+      "start": "expo start",
+      "reset-project": "node ./scripts/reset-project.js",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "lint": "expo lint"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "app",
+      "assets",
+      "components",
+      "docs",
+      "scripts"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "app": {
+      "path": "app",
+      "purpose": "Application code",
+      "fileCount": 3,
+      "lastAccessed": 1774646175476,
+      "keyFiles": [
+        "_layout.tsx",
+        "modal.tsx"
+      ]
+    },
+    "assets": {
+      "path": "assets",
+      "purpose": "Static assets",
+      "fileCount": 0,
+      "lastAccessed": 1774646175477,
+      "keyFiles": []
+    },
+    "components": {
+      "path": "components",
+      "purpose": "UI components",
+      "fileCount": 8,
+      "lastAccessed": 1774646175480,
+      "keyFiles": [
+        "external-link.tsx",
+        "haptic-tab.tsx",
+        "hello-wave.tsx",
+        "language-switcher.tsx",
+        "parallax-scroll-view.tsx"
+      ]
+    },
+    "constants": {
+      "path": "constants",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1774646175480,
+      "keyFiles": [
+        "design-system.ts",
+        "theme.ts"
+      ]
+    },
+    "dist": {
+      "path": "dist",
+      "purpose": "Distribution/build output",
+      "fileCount": 1,
+      "lastAccessed": 1774646175480,
+      "keyFiles": [
+        "metadata.json"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 4,
+      "lastAccessed": 1774646175480,
+      "keyFiles": [
+        "design-style.md",
+        "features-docs.md",
+        "inspiration.md",
+        "user-flows-and-screens.md"
+      ]
+    },
+    "hooks": {
+      "path": "hooks",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1774646175481,
+      "keyFiles": [
+        "use-color-scheme.ts",
+        "use-color-scheme.web.ts",
+        "use-design-system.ts",
+        "use-theme-color.ts"
+      ]
+    },
+    "i18n": {
+      "path": "i18n",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1774646175481,
+      "keyFiles": [
+        "index.ts"
+      ]
+    },
+    "locales": {
+      "path": "locales",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1774646175481,
+      "keyFiles": [
+        "en.json",
+        "fr.json",
+        "ja.json",
+        "ko.json",
+        "vi.json"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 1,
+      "lastAccessed": 1774646175482,
+      "keyFiles": [
+        "reset-project.js"
+      ]
+    },
+    "dist/assets": {
+      "path": "dist/assets",
+      "purpose": "Static assets",
+      "fileCount": 26,
+      "lastAccessed": 1774646175483,
+      "keyFiles": [
+        "017bc6ba3fc25503e5eb5e53826d48a8",
+        "0747a1317bbe9c6fc340b889ef8ab3ae",
+        "0a328cd9c1afd0afe8e3b1ec5165b1b4"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "app/(tabs)/index.tsx",
+      "accessCount": 13,
+      "lastAccessed": 1774685445104,
+      "type": "file"
+    },
+    {
+      "path": "constants/design-system.ts",
+      "accessCount": 10,
+      "lastAccessed": 1774685432172,
+      "type": "file"
+    },
+    {
+      "path": "components/ui/glass/glass-card.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1774646860543,
+      "type": "file"
+    },
+    {
+      "path": "components/home/task-card.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1774647273837,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 2,
+      "lastAccessed": 1774682139548,
+      "type": "directory"
+    },
+    {
+      "path": "hooks/use-design-system.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774685432309,
+      "type": "file"
+    },
+    {
+      "path": "components/ui/glass",
+      "accessCount": 1,
+      "lastAccessed": 1774646563252,
+      "type": "directory"
+    },
+    {
+      "path": "constants/theme.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774681071781,
+      "type": "file"
+    },
+    {
+      "path": "components/home/fab.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774685376307,
+      "type": "file"
+    },
+    {
+      "path": "components/ui/glass/glass-view.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774685425240,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
