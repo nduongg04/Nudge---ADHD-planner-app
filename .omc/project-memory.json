@@ -189,44 +189,98 @@
   "hotPaths": [
     {
       "path": "app/(tabs)/index.tsx",
-      "accessCount": 73,
-      "lastAccessed": 1774719766835,
+      "accessCount": 88,
+      "lastAccessed": 1774728422769,
       "type": "file"
     },
     {
-      "path": "components/home/week-calendar.tsx",
-      "accessCount": 22,
-      "lastAccessed": 1774719936898,
-      "type": "file"
-    },
-    {
-      "path": "components/home/task-card.tsx",
-      "accessCount": 15,
-      "lastAccessed": 1774717665446,
+      "path": "app/(tabs)/profile.tsx",
+      "accessCount": 54,
+      "lastAccessed": 1774728411613,
       "type": "file"
     },
     {
       "path": "constants/design-system.ts",
-      "accessCount": 14,
-      "lastAccessed": 1774717982257,
+      "accessCount": 28,
+      "lastAccessed": 1774728327413,
       "type": "file"
     },
     {
-      "path": "components/home/mock-data.ts",
-      "accessCount": 11,
-      "lastAccessed": 1774687360288,
+      "path": "components/home/week-calendar.tsx",
+      "accessCount": 27,
+      "lastAccessed": 1774720978770,
+      "type": "file"
+    },
+    {
+      "path": "components/home/task-card.tsx",
+      "accessCount": 17,
+      "lastAccessed": 1774727461167,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 17,
+      "lastAccessed": 1774727574704,
+      "type": "directory"
+    },
+    {
+      "path": "components/ui/icon-symbol.tsx",
+      "accessCount": 15,
+      "lastAccessed": 1774727586241,
       "type": "file"
     },
     {
       "path": "components/ui/glass/glass-card.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1774685966261,
+      "accessCount": 15,
+      "lastAccessed": 1774727587374,
+      "type": "file"
+    },
+    {
+      "path": "components/home/mock-data.ts",
+      "accessCount": 12,
+      "lastAccessed": 1774720676762,
+      "type": "file"
+    },
+    {
+      "path": "hooks/use-design-system.ts",
+      "accessCount": 10,
+      "lastAccessed": 1774727579616,
       "type": "file"
     },
     {
       "path": "components/home/variant-focus.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1774687412647,
+      "accessCount": 8,
+      "lastAccessed": 1774720675051,
+      "type": "file"
+    },
+    {
+      "path": "components/ui/glass/glass-view.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1774727587285,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 6,
+      "lastAccessed": 1774727466418,
+      "type": "file"
+    },
+    {
+      "path": "app/_layout.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1774727596588,
+      "type": "file"
+    },
+    {
+      "path": "app/(tabs)/focus.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1774727976788,
+      "type": "file"
+    },
+    {
+      "path": "constants/theme.ts",
+      "accessCount": 5,
+      "lastAccessed": 1774727455580,
       "type": "file"
     },
     {
@@ -236,27 +290,87 @@
       "type": "file"
     },
     {
-      "path": "hooks/use-design-system.ts",
-      "accessCount": 4,
-      "lastAccessed": 1774717994195,
-      "type": "file"
-    },
-    {
-      "path": "",
-      "accessCount": 2,
-      "lastAccessed": 1774682139548,
-      "type": "directory"
-    },
-    {
-      "path": "app/_layout.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1774718103764,
-      "type": "file"
-    },
-    {
       "path": "components/home/index.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774720681608,
+      "type": "file"
+    },
+    {
+      "path": "app/(tabs)/_layout.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1774727445810,
+      "type": "file"
+    },
+    {
+      "path": "app/modal.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1774727468920,
+      "type": "file"
+    },
+    {
+      "path": "components/home/mood-checkin.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1774727580011,
+      "type": "file"
+    },
+    {
+      "path": "components/ui/glass/index.ts",
+      "accessCount": 3,
+      "lastAccessed": 1774727586377,
+      "type": "file"
+    },
+    {
+      "path": "components/focus/focus-session.tsx",
       "accessCount": 2,
-      "lastAccessed": 1774718184803,
+      "lastAccessed": 1774721192632,
+      "type": "file"
+    },
+    {
+      "path": "components/focus/focus-complete.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774721194404,
+      "type": "file"
+    },
+    {
+      "path": "docs/features-docs.md",
+      "accessCount": 2,
+      "lastAccessed": 1774721303230,
+      "type": "file"
+    },
+    {
+      "path": "components/focus/focus-setup.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774721308058,
+      "type": "file"
+    },
+    {
+      "path": "components/focus/index.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774726382541,
+      "type": "file"
+    },
+    {
+      "path": "components/ui/custom-tab-bar.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774727448611,
+      "type": "file"
+    },
+    {
+      "path": "components/focus/task-selector.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774727461353,
+      "type": "file"
+    },
+    {
+      "path": "components/home/fab.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774727469134,
+      "type": "file"
+    },
+    {
+      "path": "components/focus/timer-dial.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1774728509553,
       "type": "file"
     },
     {
@@ -264,30 +378,6 @@
       "accessCount": 1,
       "lastAccessed": 1774646563252,
       "type": "directory"
-    },
-    {
-      "path": "constants/theme.ts",
-      "accessCount": 1,
-      "lastAccessed": 1774681071781,
-      "type": "file"
-    },
-    {
-      "path": "components/home/fab.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1774685376307,
-      "type": "file"
-    },
-    {
-      "path": "components/ui/glass/glass-view.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1774685425240,
-      "type": "file"
-    },
-    {
-      "path": "app/(tabs)/focus.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1774685938784,
-      "type": "file"
     },
     {
       "path": "components/home",
@@ -302,9 +392,81 @@
       "type": "file"
     },
     {
-      "path": "package.json",
+      "path": "components/focus/circular-progress.tsx",
       "accessCount": 1,
-      "lastAccessed": 1774717982090,
+      "lastAccessed": 1774721096848,
+      "type": "file"
+    },
+    {
+      "path": "components/focus/subtask-item.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774721109074,
+      "type": "file"
+    },
+    {
+      "path": "docs/design/design-system.md",
+      "accessCount": 1,
+      "lastAccessed": 1774721276479,
+      "type": "file"
+    },
+    {
+      "path": "docs/design/screen-docs.md",
+      "accessCount": 1,
+      "lastAccessed": 1774721280373,
+      "type": "file"
+    },
+    {
+      "path": "hooks/use-color-scheme.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774721284527,
+      "type": "file"
+    },
+    {
+      "path": "app.json",
+      "accessCount": 1,
+      "lastAccessed": 1774721302757,
+      "type": "file"
+    },
+    {
+      "path": "constants",
+      "accessCount": 1,
+      "lastAccessed": 1774725602299,
+      "type": "directory"
+    },
+    {
+      "path": "components/ui/collapsible.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774727448576,
+      "type": "file"
+    },
+    {
+      "path": "i18n/index.ts",
+      "accessCount": 1,
+      "lastAccessed": 1774727453000,
+      "type": "file"
+    },
+    {
+      "path": "components/themed-view.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774727471502,
+      "type": "file"
+    },
+    {
+      "path": "components/themed-text.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774727471530,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 1,
+      "lastAccessed": 1774727581071,
+      "type": "file"
+    },
+    {
+      "path": "components/feedback/feedback-bottom-sheet.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774728374697,
       "type": "file"
     }
   ],

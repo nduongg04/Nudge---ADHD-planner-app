@@ -350,10 +350,9 @@ function SectionGroup({
   showNowIndicator?: boolean;
 }) {
   const { colors, typography, spacing, radius, isDark } = useDesignSystem();
-  const expanded = useRef(true);
-  const arrowAnim = useRef(new Animated.Value(1)).current;
-  const contentAnim = useRef(new Animated.Value(1)).current;
-  const [, forceRender] = useState(0);
+  const [expanded, setExpanded] = useState(true);
+  const progress = useRef(new Animated.Value(1)).current;
+  const measuredHeight = useRef(0);
 
   const config = SECTION_CONFIG[timeOfDay];
   const tint = SECTION_TINTS[timeOfDay];
@@ -362,25 +361,26 @@ function SectionGroup({
   const badgeBg = isDark ? badge.bg.dark : badge.bg.light;
   const badgeText = isDark ? badge.text.dark : badge.text.light;
 
+  const onContentLayout = useCallback(
+    (e: { nativeEvent: { layout: { height: number } } }) => {
+      const h = e.nativeEvent.layout.height;
+      if (h > 0 && expanded) measuredHeight.current = h;
+    },
+    [expanded],
+  );
+
   const toggleExpanded = useCallback(() => {
-    const next = !expanded.current;
-    expanded.current = next;
-    // Arrow rotation (native driver)
-    Animated.spring(arrowAnim, {
+    const next = !expanded;
+    setExpanded(next);
+
+    Animated.spring(progress, {
       toValue: next ? 1 : 0,
-      damping: 18,
-      stiffness: 100,
+      damping: 20,
+      stiffness: 120,
       mass: 0.8,
-      useNativeDriver: true,
-    }).start();
-    // Content fade + height (JS driver)
-    Animated.timing(contentAnim, {
-      toValue: next ? 1 : 0,
-      duration: 500,
       useNativeDriver: false,
     }).start();
-    forceRender((n) => n + 1);
-  }, [arrowAnim, contentAnim]);
+  }, [expanded, progress]);
 
   return (
     <View style={{ marginTop: spacing.lg }}>
@@ -422,7 +422,7 @@ function SectionGroup({
                 marginLeft: spacing.xs,
                 transform: [
                   {
-                    rotate: arrowAnim.interpolate({
+                    rotate: progress.interpolate({
                       inputRange: [0, 1],
                       outputRange: ["0deg", "90deg"],
                     }),
@@ -437,23 +437,24 @@ function SectionGroup({
       </View>
 
       {/* Now indicator */}
-      {showNowIndicator && expanded.current && <NowIndicator />}
+      {showNowIndicator && expanded && <NowIndicator />}
 
-      {/* Task list — fade + height shrink via Animated (JS driver) */}
+      {/* Task list — single spring drives opacity + height simultaneously */}
       <Animated.View
+        onLayout={onContentLayout}
         style={{
           overflow: "hidden",
-          opacity: contentAnim,
-          maxHeight: contentAnim.interpolate({
+          opacity: progress,
+          maxHeight: progress.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 2000],
+            outputRange: [0, measuredHeight.current || 800],
           }),
-          marginTop: contentAnim.interpolate({
+          marginTop: progress.interpolate({
             inputRange: [0, 1],
             outputRange: [0, spacing.sm],
           }),
         }}
-        pointerEvents={expanded.current ? "auto" : "none"}
+        pointerEvents={expanded ? "auto" : "none"}
       >
         {tasks.length === 0 ? (
           <View

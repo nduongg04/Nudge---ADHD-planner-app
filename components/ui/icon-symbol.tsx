@@ -9,6 +9,7 @@ import { type StyleProp, type ViewStyle } from "react-native";
 
 // Solid icons
 import {
+  ArrowUpOnSquareIcon,
   Bars3Icon,
   BookOpenIcon,
   CalendarIcon,
@@ -21,6 +22,7 @@ import {
   ChevronUpIcon,
   ClipboardDocumentIcon,
   ClockIcon,
+  Cog6ToothIcon,
   ComputerDesktopIcon,
   EllipsisHorizontalIcon,
   EllipsisVerticalIcon,
@@ -49,8 +51,11 @@ import {
 import {
   ChatBubbleLeftRightIcon as ChatBubbleOutline,
   CheckCircleIcon as CheckCircleOutline,
+  Cog6ToothIcon as Cog6ToothOutline,
+  HeartIcon as HeartOutline,
   HomeIcon as HomeOutline,
   MoonIcon as MoonOutline,
+  StarIcon as StarOutline,
   UserIcon as UserOutline,
 } from "react-native-heroicons/outline";
 
@@ -68,6 +73,11 @@ const ICON_MAP = {
   "chat.outline": ChatBubbleOutline,
   "moon.outline": MoonOutline,
   "user.outline": UserOutline,
+
+  // Settings
+  cog: Cog6ToothIcon,
+  "cog.outline": Cog6ToothOutline,
+  "arrow-up-square": ArrowUpOnSquareIcon,
 
   // Actions
   plus: PlusIcon,
@@ -96,11 +106,13 @@ const ICON_MAP = {
   eye: EyeIcon,
   microphone: MicrophoneIcon,
   star: StarIcon,
+  "star.outline": StarOutline,
 
   // Task icons
   clipboard: ClipboardDocumentIcon,
   computer: ComputerDesktopIcon,
   heart: HeartIcon,
+  "heart.outline": HeartOutline,
   phone: PhoneIcon,
   book: BookOpenIcon,
 
@@ -135,7 +147,13 @@ export function IconSymbol({
     return null;
   }
 
-  // Pass both `color` (for currentColor resolution) and `fill` (direct override)
-  // to ensure SVG renders correctly on all platforms including iOS 26.
-  return <IconComponent size={size} color={color} fill={color} style={style} />;
+  const isOutline = name.endsWith(".outline");
+  return (
+    <IconComponent
+      size={size}
+      color={color}
+      {...(!isOutline && { fill: color })}
+      style={style}
+    />
+  );
 }

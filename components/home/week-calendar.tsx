@@ -1,22 +1,24 @@
 /**
- * WeekCalendar — Real paged slider for week/month navigation.
+ * WeekCalendar — Native-paged week/month slider.
  *
- * - Renders 3 pages (prev, current, next) side by side
- * - Horizontal swipe slides pages like a real carousel
- * - Swipe down to expand into month view, swipe up to collapse
- * - Tap month label to toggle expand/collapse
+ * Uses ScrollView with pagingEnabled for zero-flash page transitions.
+ * - Horizontal swipe: navigate weeks (collapsed) or months (expanded)
+ * - Swipe down / tap month label: expand to month view
+ * - Swipe up / tap month label: collapse to week view
  * - Tap any date to select it
  */
 
-import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import React, { useCallback, useMemo, useRef, useState } from "react";
+import {
+  type NativeScrollEvent,
+  type NativeSyntheticEvent,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-  withTiming,
-} from "react-native-reanimated";
 import { runOnJS } from "react-native-worklets";
 import { useDesignSystem } from "@/hooks/use-design-system";
 
@@ -37,18 +39,7 @@ const MONTH_NAMES = [
   "November",
   "December",
 ];
-const SWIPE_VELOCITY = 500;
 const EXPAND_THRESHOLD = 40;
-
-const SPRING_CONFIG = {
-  damping: 22,
-  stiffness: 220,
-  mass: 0.8,
-};
-
-const SNAP_TIMING = {
-  duration: 250,
-};
 
 // ─── Date Helpers ───────────────────────────────────────────────────────────
 
@@ -189,21 +180,23 @@ function DayLetterHeader() {
   );
 }
 
-// ─── WeekPage (day headers + single week row) ─────────────────────────────
+// ─── WeekPage (memoized) ───────────────────────────────────────────────────
 
-function WeekPage({
+const WeekPage = React.memo(function WeekPage({
   dates,
   selectedDate,
   today,
   onSelectDate,
+  width,
 }: {
   dates: Date[];
   selectedDate: Date;
   today: Date;
   onSelectDate: (date: Date) => void;
+  width: number;
 }) {
   return (
-    <View>
+    <View style={{ width }}>
       <DayLetterHeader />
       <View style={styles.weekRow}>
         {dates.map((date, idx) => (
@@ -219,25 +212,27 @@ function WeekPage({
       </View>
     </View>
   );
-}
+});
 
-// ─── MonthPage (day headers + full month grid) ────────────────────────────
+// ─── MonthPage (memoized) ──────────────────────────────────────────────────
 
-function MonthPage({
+const MonthPage = React.memo(function MonthPage({
   refDate,
   grid,
   selectedDate,
   today,
   onSelectDate,
+  width,
 }: {
   refDate: Date;
   grid: Date[][];
   selectedDate: Date;
   today: Date;
   onSelectDate: (date: Date) => void;
+  width: number;
 }) {
   return (
-    <View>
+    <View style={{ width }}>
       <DayLetterHeader />
       {grid.map((row, rowIdx) => (
         <View key={rowIdx} style={styles.weekRow}>
@@ -255,7 +250,7 @@ function MonthPage({
       ))}
     </View>
   );
-}
+});
 
 // ─── WeekCalendar ───────────────────────────────────────────────────────────
 
@@ -267,69 +262,74 @@ export function WeekCalendar({ selectedDate, onSelectDate }: WeekCalendarProps) 
   const [refDate, setRefDate] = useState(selectedDate);
   const [pageWidth, setPageWidth] = useState(0);
 
-  // ── Compute 3 week pages ──
+  const scrollRef = useRef<ScrollView>(null);
+  // Guard to prevent onMomentumScrollEnd from firing during programmatic scroll
+  const isResetting = useRef(false);
+
+  // ── Compute 3 pages ──
   const weekPages = useMemo(() => {
-    const prevWeek = addDays(refDate, -7);
-    const nextWeek = addDays(refDate, 7);
-    return {
-      prev: getWeekDates(prevWeek),
-      current: getWeekDates(refDate),
-      next: getWeekDates(nextWeek),
-    };
+    const prev = addDays(refDate, -7);
+    const next = addDays(refDate, 7);
+    return [getWeekDates(prev), getWeekDates(refDate), getWeekDates(next)];
   }, [refDate]);
 
-  // ── Compute 3 month pages ──
   const monthPages = useMemo(() => {
     const prev = addMonths(refDate, -1);
     const next = addMonths(refDate, 1);
-    return {
-      prev: { ref: prev, grid: getMonthGrid(prev.getFullYear(), prev.getMonth()) },
-      current: { ref: refDate, grid: getMonthGrid(refDate.getFullYear(), refDate.getMonth()) },
-      next: { ref: next, grid: getMonthGrid(next.getFullYear(), next.getMonth()) },
-    };
+    return [
+      { ref: prev, grid: getMonthGrid(prev.getFullYear(), prev.getMonth()) },
+      { ref: refDate, grid: getMonthGrid(refDate.getFullYear(), refDate.getMonth()) },
+      { ref: next, grid: getMonthGrid(next.getFullYear(), next.getMonth()) },
+    ];
   }, [refDate]);
 
   const monthLabel = getMonthLabel(refDate);
 
-  // ── Animated values ──
-  const translateX = useSharedValue(0);
-  const isAnimating = useSharedValue(false);
+  // ── Scroll handlers ──
+  const onMomentumEnd = useCallback(
+    (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+      if (isResetting.current) {
+        isResetting.current = false;
+        return;
+      }
+      if (pageWidth === 0) return;
 
-  // ── Navigation counter — triggers useLayoutEffect to reset translateX ──
-  const navCounter = useRef(0);
-  const [navTick, setNavTick] = useState(0);
+      const offsetX = e.nativeEvent.contentOffset.x;
+      const page = Math.round(offsetX / pageWidth);
 
-  // Reset translateX atomically with the React commit (before paint)
-  useLayoutEffect(() => {
-    if (navTick > 0) {
-      translateX.value = 0;
-      isAnimating.value = false;
-    }
-  }, [navTick, translateX, isAnimating]);
+      if (page === 1) return; // stayed on center, no navigation needed
 
-  // ── Navigation callbacks ──
-  const navigateForward = useCallback(() => {
-    if (expanded) {
-      setRefDate((d) => addMonths(d, 1));
-    } else {
-      setRefDate((d) => addDays(d, 7));
-    }
-    navCounter.current += 1;
-    setNavTick(navCounter.current);
-  }, [expanded]);
+      // 1. Instantly snap scroll back to center FIRST (before data update).
+      //    This prevents the flash: if we setRefDate first, the pages re-render
+      //    with shifted data while scroll is still at the old page = wrong content visible.
+      isResetting.current = true;
+      scrollRef.current?.scrollTo({ x: pageWidth, animated: false });
 
-  const navigateBack = useCallback(() => {
-    if (expanded) {
-      setRefDate((d) => addMonths(d, -1));
-    } else {
-      setRefDate((d) => addDays(d, -7));
-    }
-    navCounter.current += 1;
-    setNavTick(navCounter.current);
-  }, [expanded]);
+      // 2. Then update data. React re-renders the center page with the new week/month.
+      //    Since scroll is already at center, the new content appears seamlessly.
+      if (page === 0) {
+        setRefDate((d) => (expanded ? addMonths(d, -1) : addDays(d, -7)));
+      } else if (page === 2) {
+        setRefDate((d) => (expanded ? addMonths(d, 1) : addDays(d, 7)));
+      }
+    },
+    [pageWidth, expanded],
+  );
 
+  // ── Expand / Collapse via vertical gesture ──
   const doExpand = useCallback(() => setExpanded(true), []);
   const doCollapse = useCallback(() => setExpanded(false), []);
+
+  const verticalGesture = Gesture.Pan()
+    .activeOffsetY([-15, 15])
+    .failOffsetX([-15, 15])
+    .onEnd((e) => {
+      if (!expanded && e.translationY > EXPAND_THRESHOLD) {
+        runOnJS(doExpand)();
+      } else if (expanded && e.translationY < -EXPAND_THRESHOLD) {
+        runOnJS(doCollapse)();
+      }
+    });
 
   const handleSelectDate = useCallback(
     (date: Date) => {
@@ -339,114 +339,52 @@ export function WeekCalendar({ selectedDate, onSelectDate }: WeekCalendarProps) 
     [onSelectDate],
   );
 
-  const snapAndNavigate = useCallback(
-    (direction: "left" | "right") => {
-      "worklet";
-      const target = direction === "left" ? -pageWidth : pageWidth;
-      isAnimating.value = true;
-      translateX.value = withTiming(target, SNAP_TIMING, (finished) => {
-        if (finished) {
-          // Don't reset translateX here on UI thread — that causes the flash.
-          // Instead, runOnJS updates React state; useLayoutEffect resets
-          // translateX atomically with the new data commit.
-          runOnJS(direction === "left" ? navigateForward : navigateBack)();
-        }
-      });
-    },
-    [pageWidth, translateX, isAnimating, navigateForward, navigateBack],
-  );
-
-  // ── Horizontal gesture (page slide) ──
-  const horizontalGesture = Gesture.Pan()
-    .activeOffsetX([-15, 15])
-    .failOffsetY([-10, 10])
-    .onUpdate((e) => {
-      if (isAnimating.value) return;
-      // Clamp to ±pageWidth so you only see 1 adjacent page
-      translateX.value = Math.max(
-        -pageWidth,
-        Math.min(pageWidth, e.translationX),
-      );
-    })
-    .onEnd((e) => {
-      if (isAnimating.value) return;
-      const threshold = pageWidth * 0.3;
-      const shouldSnap =
-        Math.abs(e.translationX) > threshold ||
-        Math.abs(e.velocityX) > SWIPE_VELOCITY;
-
-      if (shouldSnap && e.translationX < 0) {
-        snapAndNavigate("left");
-      } else if (shouldSnap && e.translationX > 0) {
-        snapAndNavigate("right");
-      } else {
-        // Bounce back
-        translateX.value = withSpring(0, SPRING_CONFIG);
-      }
-    });
-
-  // ── Vertical gesture (expand/collapse) ──
-  const verticalGesture = Gesture.Pan()
-    .activeOffsetY([-15, 15])
-    .failOffsetX([-10, 10])
-    .onEnd((e) => {
-      if (!expanded && e.translationY > EXPAND_THRESHOLD) {
-        runOnJS(doExpand)();
-      } else if (expanded && e.translationY < -EXPAND_THRESHOLD) {
-        runOnJS(doCollapse)();
-      }
-    });
-
-  const composedGesture = Gesture.Race(horizontalGesture, verticalGesture);
-
-  // ── Animated style for the 3-page track ──
-  // Track has 3 pages in a row. `left: -pageWidth` centers on the middle page.
-  // translateX adds the gesture/animation delta on top.
-  const trackStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: translateX.value }],
-  }));
-
-  // ── Layout measurement (on the clip container, not the padded wrapper) ──
-  const onTrackLayout = useCallback(
+  // ── Layout measurement ──
+  const onContainerLayout = useCallback(
     (e: { nativeEvent: { layout: { width: number } } }) => {
-      setPageWidth(e.nativeEvent.layout.width);
+      const w = e.nativeEvent.layout.width;
+      if (w !== pageWidth) {
+        setPageWidth(w);
+      }
     },
-    [],
+    [pageWidth],
   );
 
-  // ── Render helper for a single page ──
+  // ── Render page helper ──
   const renderPage = useCallback(
-    (position: "prev" | "current" | "next") => {
+    (index: number) => {
       if (expanded) {
-        const page = monthPages[position];
+        const page = monthPages[index];
         return (
           <MonthPage
+            key={index}
             refDate={page.ref}
             grid={page.grid}
             selectedDate={selectedDate}
             today={today}
             onSelectDate={handleSelectDate}
+            width={pageWidth}
           />
         );
       }
       return (
         <WeekPage
-          dates={weekPages[position]}
+          key={index}
+          dates={weekPages[index]}
           selectedDate={selectedDate}
           today={today}
           onSelectDate={handleSelectDate}
+          width={pageWidth}
         />
       );
     },
-    [expanded, monthPages, weekPages, selectedDate, today, handleSelectDate],
+    [expanded, monthPages, weekPages, selectedDate, today, handleSelectDate, pageWidth],
   );
 
   // ── Render ──
   return (
-    <GestureDetector gesture={composedGesture}>
-      <Animated.View
-        style={[styles.container, { paddingHorizontal: spacing.xl }]}
-      >
+    <GestureDetector gesture={verticalGesture}>
+      <View style={[styles.container, { paddingHorizontal: spacing.xl }]}>
         {/* Month label — tap to toggle expand/collapse */}
         <Pressable
           onPress={() => {
@@ -468,23 +406,26 @@ export function WeekCalendar({ selectedDate, onSelectDate }: WeekCalendarProps) 
           </Text>
         </Pressable>
 
-        {/* Clipped viewport — measures usable width */}
-        <View style={styles.trackClip} onLayout={onTrackLayout}>
+        {/* Paged ScrollView — native snap, no flash */}
+        <View style={styles.trackClip} onLayout={onContainerLayout}>
           {pageWidth > 0 && (
-            <Animated.View
-              style={[
-                styles.track,
-                { width: pageWidth * 3, left: -pageWidth },
-                trackStyle,
-              ]}
+            <ScrollView
+              ref={scrollRef}
+              horizontal
+              pagingEnabled
+              showsHorizontalScrollIndicator={false}
+              scrollEventThrottle={16}
+              bounces={false}
+              onMomentumScrollEnd={onMomentumEnd}
+              contentOffset={{ x: pageWidth, y: 0 }}
             >
-              <View style={{ width: pageWidth }}>{renderPage("prev")}</View>
-              <View style={{ width: pageWidth }}>{renderPage("current")}</View>
-              <View style={{ width: pageWidth }}>{renderPage("next")}</View>
-            </Animated.View>
+              {renderPage(0)}
+              {renderPage(1)}
+              {renderPage(2)}
+            </ScrollView>
           )}
         </View>
-      </Animated.View>
+      </View>
     </GestureDetector>
   );
 }
@@ -515,9 +456,5 @@ const styles = StyleSheet.create({
   },
   trackClip: {
     overflow: "hidden",
-  },
-  track: {
-    flexDirection: "row",
-    alignItems: "flex-start",
   },
 });
