@@ -20,23 +20,19 @@ interface TaskCardProps {
 export function TaskCard({ task, compact = false, onPress }: TaskCardProps) {
   const { colors, typography, spacing, radius, shadows, isDark } = useDesignSystem();
   const isCompleted = task.status === 'completed';
-  const isActive = task.status === 'in_progress';
+
 
   return (
     <Pressable onPress={() => onPress?.(task)} style={{ marginBottom: HomeContent.cardGap }}>
       <View
         style={[
-          shadows.sm,
+          shadows.lg,
           {
             backgroundColor: isDark ? colors.backgroundElevated : '#FFFFFF',
             borderRadius: radius.xl,
             paddingVertical: compact ? HomeContent.cardPaddingCompact : HomeContent.cardPadding,
             paddingHorizontal: compact ? HomeContent.cardPaddingCompact : 10,
             opacity: isCompleted ? 0.55 : 1,
-          },
-          isActive && {
-            borderLeftWidth: 3,
-            borderLeftColor: colors.accent,
           },
         ]}>
         <View style={styles.row}>
@@ -53,11 +49,7 @@ export function TaskCard({ task, compact = false, onPress }: TaskCardProps) {
                 height: compact ? HomeContent.cardIconSizeCompact : HomeContent.cardIconSize,
               },
             ]}>
-            <IconSymbol
-              name={task.icon}
-              size={compact ? 16 : 20}
-              color={isCompleted ? colors.completed : colors.accent}
-            />
+            <Text style={{ fontSize: compact ? 16 : 20 }}>{task.emoji}</Text>
           </View>
 
           {/* Content */}
@@ -109,7 +101,7 @@ export function TaskCard({ task, compact = false, onPress }: TaskCardProps) {
                 backgroundColor: isCompleted ? colors.accent : 'transparent',
                 width: compact ? HomeContent.cardCheckboxSizeCompact : HomeContent.cardCheckboxSize,
                 height: compact ? HomeContent.cardCheckboxSizeCompact : HomeContent.cardCheckboxSize,
-                borderRadius: 7,
+                borderRadius: 9999,
               },
             ]}>
             {isCompleted && (

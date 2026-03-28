@@ -1,4 +1,5 @@
 export { DateSwitcher } from './date-switcher';
+export { WeekCalendar } from './week-calendar';
 export { TaskCard } from './task-card';
 export { SectionHeader } from './section-header';
 export { MoodCheckin } from './mood-checkin';

@@ -1,9 +1,6 @@
 /**
  * Mock data for Home screen variants.
- * Uses Heroicon names instead of emoji for cross-platform compatibility.
  */
-
-import type { IconName } from '@/components/ui/icon-symbol';
 
 export type TaskStatus = 'pending' | 'in_progress' | 'completed' | 'skipped';
 export type TimeOfDay = 'anytime' | 'morning' | 'day' | 'evening';
@@ -11,7 +8,7 @@ export type TimeOfDay = 'anytime' | 'morning' | 'day' | 'evening';
 export interface Task {
   id: string;
   title: string;
-  icon: IconName;
+  emoji: string;
   duration: number; // minutes
   startTime?: string; // HH:mm
   timeOfDay: TimeOfDay;
@@ -25,7 +22,7 @@ export const MOCK_TASKS: Task[] = [
   {
     id: '1',
     title: 'Morning meditation',
-    icon: 'sparkles',
+    emoji: '🧘',
     duration: 15,
     startTime: '07:00',
     timeOfDay: 'morning',
@@ -34,7 +31,7 @@ export const MOCK_TASKS: Task[] = [
   {
     id: '2',
     title: 'Breakfast & vitamins',
-    icon: 'sun',
+    emoji: '🍳',
     duration: 30,
     startTime: '07:30',
     timeOfDay: 'morning',
@@ -43,7 +40,7 @@ export const MOCK_TASKS: Task[] = [
   {
     id: '3',
     title: 'Review daily goals',
-    icon: 'clipboard',
+    emoji: '📋',
     duration: 10,
     startTime: '08:00',
     timeOfDay: 'morning',
@@ -54,7 +51,7 @@ export const MOCK_TASKS: Task[] = [
   {
     id: '4',
     title: 'Deep work: Project report',
-    icon: 'computer',
+    emoji: '💻',
     duration: 90,
     startTime: '09:00',
     timeOfDay: 'day',
@@ -65,7 +62,7 @@ export const MOCK_TASKS: Task[] = [
   {
     id: '5',
     title: 'Quick walk break',
-    icon: 'heart',
+    emoji: '🚶',
     duration: 15,
     startTime: '10:30',
     timeOfDay: 'day',
@@ -74,7 +71,7 @@ export const MOCK_TASKS: Task[] = [
   {
     id: '6',
     title: 'Team standup call',
-    icon: 'phone',
+    emoji: '📞',
     duration: 15,
     startTime: '11:00',
     timeOfDay: 'day',
@@ -83,7 +80,7 @@ export const MOCK_TASKS: Task[] = [
   {
     id: '7',
     title: 'Lunch & rest',
-    icon: 'clock',
+    emoji: '🍱',
     duration: 60,
     startTime: '12:00',
     timeOfDay: 'day',
@@ -92,7 +89,7 @@ export const MOCK_TASKS: Task[] = [
   {
     id: '8',
     title: 'Read 20 pages',
-    icon: 'book',
+    emoji: '📖',
     duration: 30,
     startTime: '18:00',
     timeOfDay: 'evening',
@@ -101,7 +98,7 @@ export const MOCK_TASKS: Task[] = [
   {
     id: '9',
     title: 'Wind-down routine',
-    icon: 'moon',
+    emoji: '🌙',
     duration: 20,
     startTime: '21:00',
     timeOfDay: 'evening',

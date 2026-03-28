@@ -189,26 +189,56 @@
   "hotPaths": [
     {
       "path": "app/(tabs)/index.tsx",
-      "accessCount": 13,
-      "lastAccessed": 1774685445104,
+      "accessCount": 73,
+      "lastAccessed": 1774719766835,
       "type": "file"
     },
     {
-      "path": "constants/design-system.ts",
-      "accessCount": 10,
-      "lastAccessed": 1774685432172,
-      "type": "file"
-    },
-    {
-      "path": "components/ui/glass/glass-card.tsx",
-      "accessCount": 6,
-      "lastAccessed": 1774646860543,
+      "path": "components/home/week-calendar.tsx",
+      "accessCount": 22,
+      "lastAccessed": 1774719936898,
       "type": "file"
     },
     {
       "path": "components/home/task-card.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1774647273837,
+      "accessCount": 15,
+      "lastAccessed": 1774717665446,
+      "type": "file"
+    },
+    {
+      "path": "constants/design-system.ts",
+      "accessCount": 14,
+      "lastAccessed": 1774717982257,
+      "type": "file"
+    },
+    {
+      "path": "components/home/mock-data.ts",
+      "accessCount": 11,
+      "lastAccessed": 1774687360288,
+      "type": "file"
+    },
+    {
+      "path": "components/ui/glass/glass-card.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1774685966261,
+      "type": "file"
+    },
+    {
+      "path": "components/home/variant-focus.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1774687412647,
+      "type": "file"
+    },
+    {
+      "path": "components/home/variant-cards.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1774687413193,
+      "type": "file"
+    },
+    {
+      "path": "hooks/use-design-system.ts",
+      "accessCount": 4,
+      "lastAccessed": 1774717994195,
       "type": "file"
     },
     {
@@ -218,9 +248,15 @@
       "type": "directory"
     },
     {
-      "path": "hooks/use-design-system.ts",
+      "path": "app/_layout.tsx",
       "accessCount": 2,
-      "lastAccessed": 1774685432309,
+      "lastAccessed": 1774718103764,
+      "type": "file"
+    },
+    {
+      "path": "components/home/index.ts",
+      "accessCount": 2,
+      "lastAccessed": 1774718184803,
       "type": "file"
     },
     {
@@ -245,6 +281,30 @@
       "path": "components/ui/glass/glass-view.tsx",
       "accessCount": 1,
       "lastAccessed": 1774685425240,
+      "type": "file"
+    },
+    {
+      "path": "app/(tabs)/focus.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774685938784,
+      "type": "file"
+    },
+    {
+      "path": "components/home",
+      "accessCount": 1,
+      "lastAccessed": 1774687332833,
+      "type": "directory"
+    },
+    {
+      "path": "components/home/date-switcher.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1774717981379,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 1,
+      "lastAccessed": 1774717982090,
       "type": "file"
     }
   ],

@@ -116,7 +116,7 @@ export function FocusModeView({ tasks }: FocusModeViewProps) {
                 ]}
               />
               <View style={styles.ringInner}>
-                <IconSymbol name={current.icon} size={40} color={colors.accent} />
+                <Text style={{ fontSize: 40 }}>{current.emoji}</Text>
               </View>
             </View>
           </View>
@@ -242,7 +242,7 @@ export function FocusModeView({ tasks }: FocusModeViewProps) {
             Up next
           </Text>
           <View style={[styles.nextRow, { marginTop: spacing.sm }]}>
-            <IconSymbol name={next.icon} size={20} color={colors.textSecondary} />
+            <Text style={{ fontSize: 20 }}>{next.emoji}</Text>
             <View style={{ marginLeft: spacing.sm, flex: 1 }}>
               <Text
                 style={[typography.body, { color: colors.textPrimary }]}

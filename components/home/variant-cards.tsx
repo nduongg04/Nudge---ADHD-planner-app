@@ -63,11 +63,7 @@ function CompactCard({ task }: { task: Task }) {
                   borderRadius: radius.md,
                 },
               ]}>
-              <IconSymbol
-                name={task.icon}
-                size={20}
-                color={isCompleted ? colors.completed : colors.accent}
-              />
+              <Text style={{ fontSize: 20 }}>{task.emoji}</Text>
             </View>
             {isCompleted && (
               <View
