@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"cat ~/.claude/.omc-config.json 2>/dev/null | head -50; echo \\\"---\\\"; ls ~/.config/last30days/ 2>/dev/null; echo \\\"---\\\"; cat ~/.claude/last30days.env 2>/dev/null; echo \\\"---\\\"; cat .claude...",
-  "error": "Exit code 1\n---\n---\n---",
-  "timestamp": "2026-03-28T19:50:58.505Z",
+  "tool_input_preview": "{\"command\":\"git diff app/(tabs)/profile.tsx\",\"description\":\"Check diff for profile.tsx\"}",
+  "error": "Exit code 1\n(eval):1: no matches found: app/(tabs)/profile.tsx",
+  "timestamp": "2026-03-28T20:32:46.898Z",
   "retry_count": 1
 }

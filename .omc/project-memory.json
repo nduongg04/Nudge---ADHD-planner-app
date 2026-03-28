@@ -189,20 +189,20 @@
   "hotPaths": [
     {
       "path": "app/(tabs)/index.tsx",
-      "accessCount": 88,
-      "lastAccessed": 1774728422769,
+      "accessCount": 105,
+      "lastAccessed": 1774731681442,
       "type": "file"
     },
     {
       "path": "app/(tabs)/profile.tsx",
-      "accessCount": 54,
-      "lastAccessed": 1774728411613,
+      "accessCount": 60,
+      "lastAccessed": 1774730335984,
       "type": "file"
     },
     {
       "path": "constants/design-system.ts",
-      "accessCount": 28,
-      "lastAccessed": 1774728327413,
+      "accessCount": 29,
+      "lastAccessed": 1774730079057,
       "type": "file"
     },
     {
@@ -213,8 +213,8 @@
     },
     {
       "path": "components/home/task-card.tsx",
-      "accessCount": 17,
-      "lastAccessed": 1774727461167,
+      "accessCount": 19,
+      "lastAccessed": 1774730346888,
       "type": "file"
     },
     {
@@ -224,21 +224,21 @@
       "type": "directory"
     },
     {
+      "path": "components/ui/glass/glass-card.tsx",
+      "accessCount": 16,
+      "lastAccessed": 1774729972107,
+      "type": "file"
+    },
+    {
       "path": "components/ui/icon-symbol.tsx",
       "accessCount": 15,
       "lastAccessed": 1774727586241,
       "type": "file"
     },
     {
-      "path": "components/ui/glass/glass-card.tsx",
-      "accessCount": 15,
-      "lastAccessed": 1774727587374,
-      "type": "file"
-    },
-    {
       "path": "components/home/mock-data.ts",
-      "accessCount": 12,
-      "lastAccessed": 1774720676762,
+      "accessCount": 14,
+      "lastAccessed": 1774730346917,
       "type": "file"
     },
     {
@@ -248,15 +248,15 @@
       "type": "file"
     },
     {
-      "path": "components/home/variant-focus.tsx",
-      "accessCount": 8,
-      "lastAccessed": 1774720675051,
+      "path": "components/ui/glass/glass-view.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1774729978801,
       "type": "file"
     },
     {
-      "path": "components/ui/glass/glass-view.tsx",
+      "path": "components/home/variant-focus.tsx",
       "accessCount": 8,
-      "lastAccessed": 1774727587285,
+      "lastAccessed": 1774720675051,
       "type": "file"
     },
     {

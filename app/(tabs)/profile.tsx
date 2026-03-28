@@ -573,7 +573,7 @@ export default function ProfileScreen() {
         <StreakCard />
 
         {/* Links */}
-        <GlassCard style={{ marginTop: spacing["2xl"], padding: 0 }}>
+        <GlassCard style={{ marginTop: spacing["2xl"], padding: 0, backgroundColor: colors.backgroundElevated }}>
           <LinkRow
             icon={
               <IconSymbol

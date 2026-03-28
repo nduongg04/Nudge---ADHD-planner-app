@@ -444,14 +444,20 @@ function SectionGroup({
         onLayout={onContentLayout}
         style={{
           overflow: "hidden",
-          opacity: progress,
+          opacity: progress.interpolate({
+            inputRange: [0, 0.4, 1],
+            outputRange: [0, 0, 1],
+            extrapolate: "clamp",
+          }),
           maxHeight: progress.interpolate({
             inputRange: [0, 1],
             outputRange: [0, measuredHeight.current || 800],
+            extrapolate: "clamp",
           }),
           marginTop: progress.interpolate({
             inputRange: [0, 1],
             outputRange: [0, spacing.sm],
+            extrapolate: "clamp",
           }),
         }}
         pointerEvents={expanded ? "auto" : "none"}
